@@ -1,0 +1,50 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Mozaic from "../components/Mozaic.astro";
+
+---
+<Layout>
+    <!-- Parallax Section -->
+    <section class="parallax-section">
+        <h1 class="parallax-heading">My Work</h1>
+    </section>
+
+    <!-- Centered Mozaic Section -->
+    <div class="mozaic-wrapper mt-[50%]">
+        <Mozaic />
+    </div>
+</Layout>
+
+<style>
+    /* Parallax Section */
+    .parallax-section {
+        height: 100%; /* Full viewport height */
+        display: flex;
+        justify-content: center; /* Center the heading horizontally */
+        align-items: center; /* Center the heading vertically */
+        background-image: url('/public/horizontal1.jpg'); /* Replace with your image path */
+        background-attachment: fixed; /* Enables the parallax effect */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Heading inside the parallax */
+    .parallax-heading {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Centering Mozaic Component */
+    .mozaic-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Full viewport height */
+        width: 100%; /* Full page width */
+    }
+</style>

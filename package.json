@@ -1,0 +1,21 @@
+{
+  "name": "puffy-photon",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.14",
+    "astro": "^5.5.3",
+    "exifreader": "^4.26.2",
+    "image-info-extractor": "^0.1.1",
+    "tailwindcss": "^4.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16"
+  }
+}
