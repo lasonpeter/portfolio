@@ -1,32 +1,37 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-
+import {SVGIcon} from "../misc/IconIncjection";
+import CSHARP from "../../public/icons/csharp.svg";
 // Sample data for projects
 const projects = [
     {
         name: "xNodeDialogs",
-        image: "https://imageplaceholder.net/300x300",
-        description: "This is a short description for Project 1. This is a short description for Project 1.",
-        link: "https://github.com/lasonpeter/xNodeDialogs"
+        image: "/xDialog.webp",
+        description: "Extensive Dialog System for Unity, made using xNode with support for branching and simple scene scripting",
+        link: "https://github.com/lasonpeter/xNodeDialogs",
+        icons: [SVGIcon.CSHARP, SVGIcon.UNITY]
     },
     {
         name: "N-Body Simulation",
-        image: "https://imageplaceholder.net/300x300",
-        description: "This is a short description for Project 2. This is a short description for Project 2.",
-        link: "https://github.com/lasonpeter/n-body-simulation"
+        image: "/nbody.png",
+        description: "Multithreaded N-Body Simulation using Barnes-Hut written in C++ and Raylib for graphics.",
+        link: "https://github.com/lasonpeter/n-body-simulation",
+        icons: [SVGIcon.CPP, SVGIcon.RAYLIB]
     },
     {
         name: "File Sync Server",
         image: "https://imageplaceholder.net/300x300",
-        description: "This is a short description for Project 3. This is a short description for Project 3.",
-        link: "https://github.com/lasonpeter/FileSyncServer"
+        description: "File synchronization server for Unix & Windows systems",
+        link: "https://github.com/lasonpeter/FileSyncServer",
+        icons: [SVGIcon.CSHARP]
     },
     {
-        name: "Project 3",
-        image: "https://imageplaceholder.net/300x300",
-        description: "This is a short description for Project 3. This is a short description for Project 3.",
-        link: "https://github.com/lasonpeter/FileSyncServer"
+        name: "Portfolio Website",
+        image: "/portfolio.jpg",
+        description: "Portfolio Website built using Astro and TailwindCSS hosted on AWS S3 & CloudFront",
+        link: "https://github.com/lasonpeter/FileSyncServer",
+        icons: [SVGIcon.TS, SVGIcon.ASTRO, SVGIcon.AWS]
     }
 ];
 ---
@@ -36,13 +41,14 @@ const projects = [
         <h1 class="text-3xl font-bold text-white text-center mb-32">Projects</h1>
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-20">
+        <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-20">
             {projects.map((project) => (
                     <ProjectCard
                             name={project.name}
                             image={project.image}
                             description={project.description}
                             link={project.link}
+                            icons={project.icons}
                     />
             ))}
         </div>

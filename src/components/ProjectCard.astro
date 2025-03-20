@@ -1,22 +1,27 @@
 ﻿---
-const { name, image, description,link } = Astro.props;
+const { name, image, description,link,icons } = Astro.props;
 ---
 
 <a href={link} id="Foot" class="group block overflow-hidden bg-gray-800 rounded-lg shadow-md hover:shadow-lg">
     <div class="relative">
         <!-- Image -->
-        <img src={image} alt={name} class="w-full h-16  sm:h-16 md:h-32 lg:h-64 xl:64 object-cover">
+        <img src={image} alt={name} class="w-full h-48  md:h-32 lg:h-64 xl:64 object-cover">
 
         <!-- Overlay (slides up on hover) -->
-        <div id="overlay" class="absolute -bottom-15 left-0 w-full h-full group-hover:opacity-80 translate-y-full group-hover:-translate-y-15
+        <div id="overlay" class="absolute -bottom-20 left-0 w-full h-full group-hover:opacity-80 translate-y-full group-hover:-translate-y-20
          transition-transform duration-300 flex items-center justify-center">
             <p class="text-white text-sm sm:text-base px-4 text-center">{description}</p>
         </div>
     </div>
 
     <!-- Project Name (always visible) -->
-    <div class="p-4">
+    <div class="p-4 flex items-center justify-between">
         <h2 class="text-lg font-semibold text-white">{name}</h2>
+        <div class="flex items-center space-x-2">
+            {icons.map((icon: string) => (
+                    <img src={icon} alt={name} class="w-8 h-8"></img>
+            ))}
+        </div>
     </div>
 </a>
 
