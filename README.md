@@ -3,7 +3,7 @@ Yeah so this is it, nothing too fancy except
 
 ## Hosting
 The website is created using Astro as a static site as such it can be hosted on S3 with CloudFront as CDN
-This in turn creates a near instant loading times due to content 
+This in turn creates a near instant loading times due to content being available in close proximtity to users
 ```mermaid
 graph TD;
     S3Bucket["S3 Bucket"] --> |"Origin"| CloudFront["CloudFront Distribution"];
