@@ -13,6 +13,7 @@
     "astro": "^5.5.3",
     "exifreader": "^4.26.2",
     "image-info-extractor": "^0.1.1",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {

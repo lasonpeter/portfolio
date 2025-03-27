@@ -1,10 +1,10 @@
 ﻿---
 let images = [
-    { src: "/vertical1.jpg", title: "Spirala", orientation: "vertical" },
-    { src: "/vertical2.jpg", title: "Spirala", orientation: "vertical" },
-    { src: "/horizontal1.jpg", title: "Spirala", orientation: "horizontal" },
-    { src: "/vertical1.jpg", title: "Spirala \"Cyberpunk\"", orientation: "vertical" },
-    { src: "/horizontal2.jpg", title: "Spirala", orientation: "horizontal" },
+    { src: "/vertical1.jpg", title: "Spirala", height: 2, width: 1 },
+    { src: "/horizontal1.jpg", title: "Spirala", height: 1, width: 2  },
+    { src: "/horizontal2.jpg", title: "Spirala", height: 1, width: 2  },
+    { src: "/vertical2.jpg", title: "Spirala", height: 2, width: 1  },
+    { src: "/vertical1.jpg", title: "Spirala \"Cyberpunk\"", height: 2, width: 1 },
 ];
 ---
 
@@ -68,17 +68,10 @@ let images = [
     </style>
 </head>
 <body>
-<div class="mosaic-container w-1/2">
-    {images.map(({ src, title, orientation }, index) => (
-            <div
-                    class={`mosaic-item ${orientation}`} /* Dynamically assign "horizontal" or "vertical" class */
-        style={`--aspect-ratio: ${orientation === "horizontal" ? 16 / 9 : 3 / 4};`}
-    key={index}
-    >
-    <img src={src} alt={title} />
-    <div class="mosaic-item-title">{title}</div>
-</div>
-))}
+<div class="grid grid-cols-3 grid-flow-dense w-max h-max grid-rows-4">
+    {images.map(( image ) => (
+        <img src={image.src} alt={image.title} class={"col-span-"+image.width+" row-span-"+image.height}></img>
+    ))}
 </div>
 </body>
 </html>

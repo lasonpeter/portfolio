@@ -1,11 +1,11 @@
 ﻿---
-const { name, image, description,link,icons } = Astro.props;
+const { name, image, description,link,icons,width,height} = Astro.props;
 ---
 
-<a href={link} id="Foot" class="group block overflow-hidden bg-gray-800 rounded-lg shadow-md hover:shadow-lg">
+<a href={link} id="Foot"  class={"group block overflow-hidden col-span-1 row-span-1  lg:col-span-"+width+"  bg-gray-800 shadow-md hover:shadow-lg h-full"}>
     <div class="relative">
         <!-- Image -->
-        <img src={image} alt={name} class="w-full h-48  md:h-32 lg:h-64 xl:64 object-cover">
+        <img src={image} alt={name} class="w-full h-32  lg:h-96 object-cover">
 
         <!-- Overlay (slides up on hover) -->
         <div id="overlay" class="absolute -bottom-20 left-0 w-full h-full group-hover:opacity-80 translate-y-full group-hover:-translate-y-20
@@ -13,13 +13,12 @@ const { name, image, description,link,icons } = Astro.props;
             <p class="text-white text-sm sm:text-base px-4 text-center">{description}</p>
         </div>
     </div>
-
     <!-- Project Name (always visible) -->
-    <div class="p-4 flex items-center justify-between">
+    <div class="p-1 lg:p-4 flex items-center justify-between">
         <h2 class="text-lg font-semibold text-white">{name}</h2>
         <div class="flex items-center space-x-2">
             {icons.map((icon: string) => (
-                    <img src={icon} alt={name} class="w-8 h-8"></img>
+                    <img src={icon} alt={name} class="w-8 h-4"></img>
             ))}
         </div>
     </div>
@@ -35,6 +34,6 @@ n
         transition: background-color 0.5s;
     }
     #Foot{
-        background-color: #D97904;
+        background-color: #2d3133;
     }
 </style>

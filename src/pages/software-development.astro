@@ -10,54 +10,143 @@ const projects = [
         image: "/xDialog.webp",
         description: "Extensive Dialog System for Unity, made using xNode with support for branching and simple scene scripting",
         link: "https://github.com/lasonpeter/xNodeDialogs",
-        icons: [SVGIcon.CSHARP, SVGIcon.UNITY]
+        icons: [SVGIcon.CSHARP, SVGIcon.UNITY],
+        width: 2,
+        height: 2
     },
     {
         name: "N-Body Simulation",
         image: "/nbody.png",
         description: "Multithreaded N-Body Simulation using Barnes-Hut written in C++ and Raylib for graphics.",
         link: "https://github.com/lasonpeter/n-body-simulation",
-        icons: [SVGIcon.CPP, SVGIcon.RAYLIB]
+        icons: [SVGIcon.CPP, SVGIcon.RAYLIB],
+        width: 1,
+        height: 2
     },
     {
         name: "File Sync Server",
         image: "https://imageplaceholder.net/300x300",
         description: "File synchronization server for Unix & Windows systems",
         link: "https://github.com/lasonpeter/FileSyncServer",
-        icons: [SVGIcon.CSHARP]
+        icons: [SVGIcon.CSHARP],
+        width: 1,
+        height: 4
     },
     {
         name: "Portfolio Website",
         image: "/portfolio.jpg",
         description: "Portfolio Website built using Astro and TailwindCSS hosted on AWS S3 & CloudFront",
         link: "https://github.com/lasonpeter/FileSyncServer",
-        icons: [SVGIcon.TS, SVGIcon.ASTRO, SVGIcon.AWS]
+        icons: [SVGIcon.TS, SVGIcon.ASTRO, SVGIcon.AWS],
+        width: 2,
+        height: 4
     }
 ];
 ---
 
 <Layout>
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-white text-center mb-32">Projects</h1>
+    <div id="container" class="w-full min-h-screen">
+        <div class="flex flex-col " >
+            <div id="about-me" class="flex flex-row items-center justify-center">
+                <div class="basis-1/4 ml-28 mt-28 p-8">
+                    <img src="/portrait.jpg" alt="Me" class=""></img>
+                </div>
+                <div class="basis-1/4">
+                    <h1 class="text-3xl font-bold text-white text-center mb-32">About Me</h1>
+                    <div class="text-white text-center">
+                        Hi I'm Peter, a software developer based in the Poland with a passion for programming, and tech in general.
+                        <br>
+                        Mainly I work with C# .NET Core/ASP.NET Core & blah blah blah
+                    </div>
+                </div>
+                <div class="basis-2/4" id="contact">
+                    <h1 class="text-3xl font-bold text-white text-center mb-32 ">Contact</h1>
+                    <div class="flex flex-col items-start pl-48">
+                        <div id="contact1" data-text="Contact 1" class="text-white text-center uppercase font-bold">Contact 1</div>
+                        <div id="contact2" data-text="Contact number 2" class="text-white text-center uppercase font-bold">Contact number 2</div>
+                        <div id="contact3" data-text="Contact number 453" class="text-white text-center uppercase font-bold">Contact number 453</div>
 
-        <!-- Grid -->
-        <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-20">
-            {projects.map((project) => (
-                    <ProjectCard
-                            name={project.name}
-                            image={project.image}
-                            description={project.description}
-                            link={project.link}
-                            icons={project.icons}
-                    />
-            ))}
+                    </div>
+                </div>
+            </div>
+            <div class="p-1.5 flex flex-col items-center justify-center mb-32">
+                <h1 class=" text-3xl font-bold text-white text-center mt-32">Some of my projects</h1>
+                <div id="scroll-to-projects">
+                    <svg  class="fill-white  animate-bounce hover:translate-y-2 duration-300 ease-in-out h-20 m-10" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 330 330" xml:space="preserve">
+<g id="XMLID_88_">
+	<path id="XMLID_89_" d="M304.394,139.394l-139.39,139.393L25.607,139.393c-5.857-5.857-15.355-5.858-21.213,0.001
+		c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393s7.794-1.581,10.606-4.394l149.996-150
+		c5.858-5.858,5.858-15.355,0-21.213C319.749,133.536,310.251,133.535,304.394,139.394z"/>
+    <path id="XMLID_90_" d="M154.398,190.607c2.813,2.813,6.628,4.393,10.606,4.393s7.794-1.581,10.606-4.394l149.996-150
+		c5.858-5.858,5.858-15.355,0-21.213c-5.857-5.858-15.355-5.858-21.213,0l-139.39,139.393L25.607,19.393
+		c-5.857-5.858-15.355-5.858-21.213,0c-5.858,5.858-5.858,15.355,0,21.213L154.398,190.607z"/>
+</g>
+</svg>
+                </div>
         </div>
-    </div>
+                <!-- Grid -->
+                <div id="projects" class="grid  grid-cols-1 lg:grid-cols-3  gap-1"> <!-- A grid with three columns -->
+                    {projects.map((project) => (
+                            <ProjectCard
+                                    width={project.width}
+                                    height={project.height}
+                                    name={project.name}
+                                    image={project.image}
+                                    description={project.description}
+                                    link={project.link}
+                                    icons={project.icons}
+                            />
+                    ))}
+                </div>
+            </div>
+        </div>
 </Layout>
-
 <style>
 
     #container{
-        background-color: #464d55;
+        background-color: #2b2b2b;
     }
 </style>
+<script>
+    document.getElementById('scroll-to-projects')!.addEventListener('click', function() {
+        const targetElement = document.getElementById('projects');
+        targetElement!.scrollIntoView({ behavior: 'smooth' });
+    });
+
+
+    document.getElementById("contact1")?.addEventListener("mouseenter", () => hackAnimation("contact1"));
+    document.getElementById("contact2")?.addEventListener("mouseenter", () => hackAnimation("contact2"));
+    document.getElementById("contact3")?.addEventListener("mouseenter", () => hackAnimation("contact3"));
+    function hackAnimation(name:string){
+        const ANIMATION_STEP = 20;
+        let i = 0;
+        let div = document.getElementById(name)
+        let originalText = div!.dataset.text!;
+        setInterval(() =>{
+            if(i <= div!.dataset.text!.length){
+                div!.innerText = originalText.slice(0,i) + generateRandomString(originalText.length - i);
+            }
+            i++;
+
+        }, ANIMATION_STEP);
+
+    }
+    function generateRandomString(amount:number):string{
+        const allKeyboardCharacters = [
+            // Uppercase letters
+            'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+            'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+            'Z', 'X', 'C', 'V', 'B', 'N', 'M',
+            // Numbers
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            // Symbols
+            '!', '@', '#', '$', '%', '^', '&', '*', '?'
+        ];
+        let finalString = "";
+        for (let i = 0; i < amount; i++) {
+            finalString += allKeyboardCharacters[Math.floor(Math.random() * allKeyboardCharacters.length)];
+        }
+        return finalString;
+    }
+</script>
