@@ -1,1 +1,6 @@
 @import "tailwindcss";
+.lg\:col-span-2 {
+    @media (width >= 64rem) {
+        grid-column: span 2 / span 2;
+    }
+}

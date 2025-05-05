@@ -1,4 +1,5 @@
 ﻿---
+import PhotoCard from "./PhotoCard.astro";
 let images = [
     { src: "/vertical1.jpg", title: "Spirala", height: 2, width: 1 },
     { src: "/horizontal1.jpg", title: "Spirala", height: 1, width: 2  },
@@ -68,9 +69,9 @@ let images = [
     </style>
 </head>
 <body>
-<div class="grid grid-cols-3 grid-flow-dense w-max h-max grid-rows-4">
+<div class="grid grid-cols-8 w-max h-max ">
     {images.map(( image ) => (
-        <img src={image.src} alt={image.title} class={"col-span-"+image.width+" row-span-"+image.height}></img>
+            <PhotoCard ></PhotoCard>
     ))}
 </div>
 </body>

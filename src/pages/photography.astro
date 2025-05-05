@@ -1,28 +1,117 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
+// Although not used in this snippet, keeping imports from original code
 import Welcome from "../components/Welcome.astro";
 import Mozaic from "../components/Mozaic.astro";
 
+const images = [
+    { src: 'vertical1.jpg', alt: 'Image 1' },
+    { src: 'horizontal2.jpg', alt: 'Image 2' },
+    { src: 'vertical1.jpg', alt: 'Image 3' },
+    { src: 'horizontal1.jpg', alt: 'Image 4' },
+    { src: 'vertical1.jpg', alt: 'Image 5' },
+    { src: 'horizontal1.jpg', alt: 'Image 6' },
+    { src: 'vertical1.jpg', alt: 'Image 5' },
+    { src: 'vertical2.jpg', alt: 'Image 6' },
+    { src: 'vertical1.jpg', alt: 'Image 5' },
+    { src: 'vertical2.jpg', alt: 'Image 6' },
+];
 ---
+<link href="/libs/flexbin.css" rel="stylesheet">
+
 <Layout>
-    <!-- Parallax Section -->
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="#gallery-section">Gallery</a>
+            <a href="#contact-section">Contact</a>
+        </div>
+    </nav>
+
     <section class="parallax-section">
         <h1 class="parallax-heading">My Work</h1>
     </section>
 
-    <!-- Centered Mozaic Section -->
-    <div class="mozaic-wrapper mt-[50%]">
-        <Mozaic />
+    <div id="gallery-section" class="gallery-section"> <div class="image-grid">
+        <div id="ngy2p" data-nanogallery2='{
+                "itemsBaseURL": "",
+                "thumbnailWidth": "300 XS150 SM200 ME350 LA400 XL400",
+                "thumbnailHeight": "auto",
+                "thumbnailBorderVertical": 0,
+                "thumbnailBorderHorizontal": 0,
+                "colorScheme": {
+                  "thumbnail": {
+                    "background": "rgba(84,84,84,1)"
+                  }
+                },
+                "thumbnailLabel": {
+                  "position": "overImageOnBottom"
+                },
+                "thumbnailAlignment": "justify",
+                "thumbnailGutterWidth": 10,
+                "thumbnailGutterHeight": 10,
+                "thumbnailOpenImage": true
+              }'>
+            {images.map((image) => (
+                    <a href={image.src} data-ngthumb={image.src} data-ngdesc={image.alt}></a>
+            ))}
+        </div>
+        <div class="overlay-div"></div>
     </div>
+    </div>
+
+    <div id="contact-section" class="contact-section-placeholder"> <h2>Contact Us</h2>
+        <p>This is the contact section. Add your contact form or information here.</p>
+    </div>
+
+
 </Layout>
 
 <style>
+    /* Navigation Styles */
+    .top-nav {
+        width: 100%;
+        padding: 15px 20px; /* Short height via padding, slightly more than original */
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+        color: white;
+        display: flex;
+        justify-content: center; /* Center links horizontally */
+        align-items: center; /* Center links vertically */
+        /* Not sticky - default behavior */
+        position: relative; /* Needed for z-index and potential future positioning */
+        z-index: 10; /* Ensure it stays on top of other content */
+
+        /* Blur/Fade effect from bottom to top using mask */
+        /* This makes the bottom part of the nav transparent */
+        mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+        -webkit-mask-image: -webkit-linear-gradient(to top, transparent 0%, black 50%, black 100%); /* For Safari support */
+    }
+
+    .top-nav .nav-links {
+        display: flex;
+        gap: 30px; /* Space between links */
+    }
+
+    .top-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem; /* Slightly larger font */
+        transition: color 0.3s ease;
+        font-weight: bold;
+    }
+
+    .top-nav a:hover {
+        color: #aaa; /* Lighter grey on hover */
+    }
+
     /* Parallax Section */
     .parallax-section {
-        height: 100%; /* Full viewport height */
-        display: flex;
+        text-align: center;
+        vertical-align: top;
+        height: 80vh; /* Full viewport height */
+        display: flex; /* Use flexbox */
         justify-content: center; /* Center the heading horizontally */
-        align-items: center; /* Center the heading vertically */
+        /* Removed align-items: center to allow content to align to the top by default */
+        align-items: flex-start; /* Align items to the top */
         background-image: url('/public/horizontal1.jpg'); /* Replace with your image path */
         background-attachment: fixed; /* Enables the parallax effect */
         background-position: center;
@@ -30,21 +119,89 @@ import Mozaic from "../components/Mozaic.astro";
         background-size: cover;
         color: white;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        /* Adjust padding to prevent content from being hidden behind the nav */
+        padding-top: 70px; /* Add padding to the top roughly equal to nav height */
+        margin-top: -70px; /* Negative margin to pull section up behind the nav */
+        box-sizing: border-box; /* Include padding in the element's total height */
+        mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+        -webkit-mask-image: -webkit-linear-gradient(to top, transparent 0%, black 50%, black 100%); /* For Safari support */
     }
 
     /* Heading inside the parallax */
     .parallax-heading {
-        font-size: 3rem;
+        font-size: 3.5rem; /* Slightly larger heading */
         font-weight: bold;
         text-align: center;
+        vertical-align: top;
+        /* Removed negative margin to allow it to sit at the top of the flex container */
+        margin-top: 10vh; /* Ensure no extra top margin is pushing it down */
+        width: 100%; /* Allow the heading to take full width for centering */
     }
 
-    /* Centering Mozaic Component */
+    /* Centering Mozaic Component - styles from original code */
+    /* Note: Mozaic component is imported but not used in the template */
     .mozaic-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%; /* Full viewport height */
-        width: 100%; /* Full page width */
+        height: 100%; /* Full height of parent */
+        width: 90%; /* Full width of parent */
+    }
+
+    /* Image Grid styles */
+    .gallery-section {
+        margin-top: -15vh;
+        min-height: 100vh; /* Ensure gallery section takes at least full height */
+        padding: 20px 0; /* Add some vertical padding */
+        position: relative; /* Needed for the overlay to position relative to it if not fixed */
+        z-index: 1; /* Ensure it's below the overlay */
+    }
+
+    .image-grid {
+        width: 100%;
+        /*max-width: 1200px; /* Optional: limit max width for large screens */
+        margin: 0 auto; /* Center the grid */
+        //padding: 0 20px; /* Add horizontal padding */
+        box-sizing: border-box;
+    }
+
+    /* Contact Section Placeholder Styles */
+    .contact-section-placeholder {
+        /* z-index: 100;  Remove z-index as overlay will handle layering */
+        margin-top: -50vh;
+        min-height: 50vh; /* Ensure section has significant height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px; /* More padding */
+        text-align: center;
+        color: #8e8e8e;
+        position: relative; /* Needed for the overlay to position relative to it if not fixed */
+        z-index: 1; /* Ensure it's below the overlay */
+    }
+
+    .contact-section-placeholder h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    /* Overlay Div Styles */
+    .overlay-div {
+        position: absolute; /* Position relative to the nearest positioned ancestor (Layout) */
+        bottom: 0; /* Start from the top of the positioned ancestor */
+        //margin-bottom: -20vh;
+        left: 0;
+        width: 100%;
+        height: 80vh; /* Cover the full height of the positioned ancestor */
+        z-index: 50; /* Ensure it's above the gallery and contact sections */
+        pointer-events: none; /* Allows clicks to pass through to elements below */
+
+        background: linear-gradient(to top, rgba(34,35,35,255) 0%, rgba(34,35,35,255) 60%, rgba(34,35,35,0) 100%);
     }
 </style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>

@@ -3,4 +3,6 @@ const { src,title,width,height} = Astro.props;
 
 ---
 
-<img src={src} alt={title} class="col-span-{width} row-span-{height}"></img>/>
+<img src={src} alt={title} class={"col-span-"+width+" row-span-"+height+""}
+
+></img>
