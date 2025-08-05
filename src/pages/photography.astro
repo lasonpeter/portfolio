@@ -5,16 +5,21 @@ import Welcome from "../components/Welcome.astro";
 import Mozaic from "../components/Mozaic.astro";
 
 const images = [
-    { src: 'vertical1.jpg', alt: 'Image 1' },
-    { src: 'horizontal2.jpg', alt: 'Image 2' },
-    { src: 'vertical1.jpg', alt: 'Image 3' },
-    { src: 'horizontal1.jpg', alt: 'Image 4' },
-    { src: 'vertical1.jpg', alt: 'Image 5' },
-    { src: 'horizontal1.jpg', alt: 'Image 6' },
-    { src: 'vertical1.jpg', alt: 'Image 5' },
-    { src: 'vertical2.jpg', alt: 'Image 6' },
-    { src: 'vertical1.jpg', alt: 'Image 5' },
-    { src: 'vertical2.jpg', alt: 'Image 6' },
+    /*{ src: '/photos/PHOTO-0001.jpg', alt: 'Image 1' },*/
+    { src: '/photos/PHOTO_17.jpg', alt: 'Image 2' },
+    { src: '/photos/PHOTO_26.jpg', alt: 'Image 6' },
+    { src: '/photos/PHOTO_18.jpg', alt: 'Image 3' },
+    { src: '/photos/PHOTO_19.jpg', alt: 'Image 4' },
+    { src: '/photos/PHOTO_25.jpg', alt: 'Image 5' },
+    { src: '/photos/PHOTO_21.jpg', alt: 'Image 6' },
+    { src: '/photos/PHOTO_22.jpg', alt: 'Image 5' },
+    { src: '/photos/PHOTO_24.jpg', alt: 'Image 6' },
+    { src: '/photos/PHOTO_27.jpg', alt: 'Image 7' },
+    { src: '/photos/PHOTO_28.jpg', alt: 'Image 7' },
+    { src: '/photos/PHOTO_29.jpg', alt: 'Image 7' },
+    { src: '/photos/PHOTO_30.jpg', alt: 'Image 7' },
+    { src: '/photos/PHOTO_31.jpg', alt: 'Image 7' },
+    { src: '/photos/PHOTO_32.jpg', alt: 'Image 7' },
 ];
 ---
 <link href="/libs/flexbin.css" rel="stylesheet">
@@ -59,8 +64,12 @@ const images = [
     </div>
     </div>
 
-    <div id="contact-section" class="contact-section-placeholder"> <h2>Contact Us</h2>
-        <p>This is the contact section. Add your contact form or information here.</p>
+    <div id="contact-section" class="contact-section-placeholder"> <h2>Contact me</h2>
+        Email: contact@lasonpeter.net
+        <br>
+        Phone: 739 009 763
+        <br>
+        Instagram: <a href="https://www.instagram.com/lason_peter">lason_peter</a>
     </div>
 
 
@@ -107,12 +116,12 @@ const images = [
     .parallax-section {
         text-align: center;
         vertical-align: top;
-        height: 80vh; /* Full viewport height */
+        height: 100vh; /* Full viewport height */
         display: flex; /* Use flexbox */
         justify-content: center; /* Center the heading horizontally */
         /* Removed align-items: center to allow content to align to the top by default */
         align-items: flex-start; /* Align items to the top */
-        background-image: url('/public/horizontal1.jpg'); /* Replace with your image path */
+        background-image: url('/photos/PHOTO_26.jpg'); /* Replace with your image path */
         background-attachment: fixed; /* Enables the parallax effect */
         background-position: center;
         background-repeat: no-repeat;
@@ -151,7 +160,7 @@ const images = [
     /* Image Grid styles */
     .gallery-section {
         margin-top: -15vh;
-        min-height: 100vh; /* Ensure gallery section takes at least full height */
+        min-height: 130vh; /* Ensure gallery section takes at least full height */
         padding: 20px 0; /* Add some vertical padding */
         position: relative; /* Needed for the overlay to position relative to it if not fixed */
         z-index: 1; /* Ensure it's below the overlay */
